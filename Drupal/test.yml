@@ -68,6 +68,34 @@ tasks:
        shell: >
          mv /tmp/composer.phar /usr/local/bin/composer
          creates=/usr/local/bin/composer
+    - name: pull Drush code from github
+       git:
+         repo: https://github.com/drush-ops/drush.git
+         dest: /opt/drush
+    - name: 使用composer安装Drush
+       shell: >
+         /usr/local/bin/composer install
+         chdir=/opt/drush
+         creates=/opt/drush/vendor/autoload.php
+    - name: 创建Drush命令符号链接
+       file:
+         src: /opt/drush/drush
+         dest: /usr/local/bin/drush
+         state: link
+    - name: 下载Drupal代码到html目录
+       git:
+         repo: http://drupalcode.org/project/drupal.git
+         version: "{{ drupal_core_version }}"
+         dest: "{{ drupal_core_path }}"
+    - name: install Drupal
+       commond: >
+         drush si -y --site-name="{{ drupal_site_name }}" --account-name=admin   --account-pass=admin --db-url=mysql://root@localhost/{{ domain }}
+         chdir={{ drupal_core_path }}
+         creates={{ drupal_core_path }}/sites/default/settings.php
+       notify: restart nginx
+    - name: 为settings.php设置正确权限
+       file:
+         path: "{{ drupal_core_path }}/sites/default/settings.php"
 handlers:
     - name: restart nginx
        service: name=nginx state=restarted

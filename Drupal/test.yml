@@ -52,7 +52,7 @@ tasks:
     - name: "配置php"
        template:
          src: "templates/php.j2"
-         dest: "/etc/php/5.6/fpm/pool.d/www.conf"
+         dest: "/etc/php/7.0/fpm/pool.d/www.conf"
        notify: restart php7.0-fpm
     - name: "Download composer installer"
        get_url:

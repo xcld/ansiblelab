@@ -1,0 +1,11 @@
+[www]
+user = {{ user_and_group }}
+group = {{ user_and_group }}
+listen = /run/php/php7.0-fpm.sock
+listen.owner = {{ user_and_group }}
+listen.group = {{ user_and_group }}
+pm = dynamic
+pm.max_children = 100
+pm.start_servers = 5
+pm.min_spare_servers = 5
+pm.max_spare_servers = 20

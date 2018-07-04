@@ -80,7 +80,7 @@ server {
         # PHP 5 socket location.
         #fastcgi_pass unix:/var/run/php5-fpm.sock;
         # PHP 7 socket location.
-        fastcgi_pass unix:/var/run/php/php5.6-fpm.sock;  #这里改成环境对应的路径，错误会导致502
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;  #这里改成环境对应的路径，错误会导致502
     }
 
     # Fighting with Styles? This little gem is amazing.

@@ -86,7 +86,7 @@
            version: "{{ drupal_core_version }}"
            dest: "{{ drupal_core_path }}"
       - name: install Drupal
-        commond: >
+        command: >
            drush si -y --site-name="{{ drupal_site_name }}" --account-name=admin   --account-pass=admin --db-url=mysql://root@localhost/{{ domain }}
            chdir={{ drupal_core_path }}
            creates={{ drupal_core_path }}/sites/default/settings.php

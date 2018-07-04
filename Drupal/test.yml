@@ -96,6 +96,13 @@ tasks:
     - name: 为settings.php设置正确权限
        file:
          path: "{{ drupal_core_path }}/sites/default/settings.php"
+         mode: 0744
+    - name: 开放file目录的所有权限
+       file:
+         path: "{{ drupal_core_path }}/sites/default/files"
+         mode: 077
+         state: directory
+         recurse: yes
 handlers:
     - name: restart nginx
        service: name=nginx state=restarted

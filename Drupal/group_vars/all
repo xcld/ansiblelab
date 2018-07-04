@@ -1,4 +1,4 @@
-# nginx configure
+---
 server_hostname: www.drupaltest.test
 drupal_core_path: "/var/www/Drupal"
 domain: drupaltest

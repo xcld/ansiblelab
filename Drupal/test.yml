@@ -1,8 +1,8 @@
 ---
 - hosts: genki*
-pre_tasks:
-    - name: update apt cache if needed.
-       apt: update_cache=yes cache_valid_time=3600
+#pre_tasks:
+#    - name: update apt cache if needed.
+#       apt: update_cache=yes cache_valid_time=3600
 tasks:
     - name: 安装用于管理apt源工具
        apt: name={{item}} state=present

@@ -86,7 +86,7 @@
            state: link
       - name: 下载Drupal代码到html目录
         git:
-           repo: http://drupalcode.org/project/drupal.git
+           repo: https://git.drupal.org/project/drupal.git
            version: "{{ drupal_core_version }}"
            dest: "{{ drupal_core_path }}"
       - name: install Drupal

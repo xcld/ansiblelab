@@ -73,7 +73,7 @@
            dest: /opt/drush
       - name: 使用composer安装Drush
         shell: >
-           /usr/local/bin/composer install
+           /usr/local/bin/composer config -g repo.packagist composer https://packagist.phpcomposer.com && /usr/local/bin/composer install
            chdir=/opt/drush
            creates=/opt/drush/vendor/autoload.php
       - name: 创建Drush命令符号链接
